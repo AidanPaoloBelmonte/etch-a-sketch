@@ -1,5 +1,6 @@
 let stylesheet = document.styleSheets[0];
 
+let regenButton = document.querySelector("#regenerate");
 let container = document.querySelector("#container");
 
 let basis = 25;
@@ -17,9 +18,27 @@ container.addEventListener("mouseover", (e) => {
   );
 });
 
+regenButton.addEventListener("click", (e) => {
+  let resolution = parseInt(prompt("Set a new grid resolution (1-100):"));
+  while (isNaN(resolution) || resolution < 1 || resolution > 100) {
+    resolution = parseInt(
+      prompt("Invalid Resolution! Please set a resolution between 1-100."),
+    );
+  }
+
+  generateGrid(resolution);
+});
+
 function generateGrid(base) {
   if (container === null) {
     return;
+  }
+
+  if (container.hasChildNodes()) {
+    let childCount = container.children.length;
+    for (let l = 0; l < childCount; l++) {
+      container.removeChild(container.children[0]);
+    }
   }
 
   basis = 100 / base;
