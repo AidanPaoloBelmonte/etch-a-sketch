@@ -7,7 +7,7 @@ function initialize_grid() {
 
   for (let l = 0; l < 16; l++) {
     let ele = document.createElement("div");
-    ele.setAttribute("class", `box {l}`);
+    ele.setAttribute("class", "box");
 
     container.appendChild(ele);
   }
