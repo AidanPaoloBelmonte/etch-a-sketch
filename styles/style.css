@@ -10,6 +10,6 @@
 }
 
 .box {
-    border: 3px solid blue;
+    border: 1px solid black;
     box-sizing: border-box;
 }
