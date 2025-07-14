@@ -1,4 +1,4 @@
-let stylesheet = document.querySelector("style");
+let stylesheet = document.styleSheets[0];
 
 let container = document.querySelector("#container");
 
@@ -11,19 +11,11 @@ function generateGrid(base) {
     let ele = document.createElement("div");
     ele_id = l.toString();
 
-    ele.setAttribute("class", `box basis item${ele_id}`);
+    ele.setAttribute("class", `box item${ele_id}`);
+    ele.setAttribute("style", `flex-basis: ${100 / base}%`);
 
     container.appendChild(ele);
   }
 }
 
-function changeFlexBasis(basis) {
-  if (stylesheet === null) {
-    console.error("Stylesheet was not fetched!");
-  }
-
-  stylesheet.removeRule(-1);
-  stylesheet.insertRule(`.basis { flex-basis: ${basis};}`, -1);
-}
-
-generateGrid(4);
+generateGrid(25);
