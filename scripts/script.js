@@ -8,13 +8,16 @@ let basis = 25;
 container.addEventListener("mouseover", (e) => {
   let target = e.target;
 
-  if (target.id === "container") {
+  if (target.id === "container" || target.className == "box filled") {
     return;
   }
 
+  let fillColor = randomColor();
+
+  target.setAttribute("class", "box filled");
   target.setAttribute(
     "style",
-    `flex-basis: ${basis}%; background-color: black;`,
+    `flex-basis: ${basis}%; background-color: ${fillColor};`,
   );
 });
 
@@ -53,6 +56,17 @@ function generateGrid(base) {
 
     container.appendChild(ele);
   }
+}
+
+function randomColor() {
+  let hex = "0123456789ABCDEF";
+  let color = "#";
+
+  for (let l = 0; l < 6; l++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+
+  return color;
 }
 
 generateGrid(4);
