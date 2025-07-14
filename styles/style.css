@@ -3,9 +3,12 @@
     border: 3px solid black;
 
     display: flex;
+    flex-wrap: wrap;
 }
 
 .box {
     border: 3px solid blue;
+    box-sizing: border-box;
+
     flex-basis: 25%;
 }
